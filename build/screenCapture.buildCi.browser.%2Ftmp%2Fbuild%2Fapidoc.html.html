@@ -1,0 +1,612 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/beyondscreen/node-rpi-ws281x-native">rpi-ws281x-native (v0.8.1)</a>
+</h1>
+<h4>(raspberry-pi *only*) native bindings to control a strip of WS281x-LEDs with node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.rpi-ws281x-native">module rpi-ws281x-native</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.init">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>init
+            <span class="apidocSignatureSpan">(numLeds, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.render">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>render
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.reset">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>reset
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.setBrightness">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>setBrightness
+            <span class="apidocSignatureSpan">(brightness)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.setIndexMapping">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>setIndexMapping
+            <span class="apidocSignatureSpan">(mapping)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">rpi-ws281x-native.</span>_eventsCount</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.</span>_events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.</span>domain</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.</span>indexMapping</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.</span>ws281x_native</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.rpi-ws281x-native.indexMapping">module rpi-ws281x-native.indexMapping</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.indexMapping.mirrorMatrixX">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.indexMapping.</span>mirrorMatrixX
+            <span class="apidocSignatureSpan">(rows, cols)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.rpi-ws281x-native.ws281x_native">module rpi-ws281x-native.ws281x_native</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.ws281x_native.init">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>init
+            <span class="apidocSignatureSpan">(numLeds, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.ws281x_native.render">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>render
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.ws281x_native.reset">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>reset
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.ws281x_native.setBrightness">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>setBrightness
+            <span class="apidocSignatureSpan">(brightness)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rpi-ws281x-native.ws281x_native.setIndexMapping">
+            function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>setIndexMapping
+            <span class="apidocSignatureSpan">(mapping)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>_eventsCount</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>_events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>domain</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>indexMapping</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.rpi-ws281x-native" id="apidoc.module.rpi-ws281x-native">module rpi-ws281x-native</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.init" id="apidoc.element.rpi-ws281x-native.init">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>init
+        <span class="apidocSignatureSpan">(numLeds, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (numLeds, options) {
+    _isInitialized = true;
+    _outputBuffer = new Buffer(4 * numLeds);
+
+    bindings.init(numLeds, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*                           intialization-options for the library
+*                           (PWM frequency, DMA channel, GPIO, Brightness)
+*/
+ws281x.init = function(numLeds, options) {
+   _isInitialized = true;
+   _outputBuffer = new Buffer(4 * numLeds);
+
+   bindings.<span class="apidocCodeKeywordSpan">init</span>(numLeds, options);
+};
+
+
+/**
+* register a mapping to manipulate array-indices within the
+* data-array before rendering.
+*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.render" id="apidoc.element.rpi-ws281x-native.render">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>render
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (data) {
+    if(!_isInitialized) {
+        throw new Error('render called before initialization.');
+    }
+
+    this.emit('beforeRender', data);
+
+    if(_indexMapping) {
+        data = remap(data, _indexMapping);
+    }
+
+    for(var i=0; i&lt;data.length; i++) {
+        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
+    }
+    bindings.render(_outputBuffer);
+
+    this.emit('render', data);
+
+    return data;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if(_indexMapping) {
+        data = remap(data, _indexMapping);
+    }
+
+    for(var i=0; i&lt;data.length; i++) {
+        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
+    }
+    bindings.<span class="apidocCodeKeywordSpan">render</span>(_outputBuffer);
+
+    this.emit('render', data);
+
+    return data;
+};
+
+ws281x.setBrightness = function(brightness) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.reset" id="apidoc.element.rpi-ws281x-native.reset">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>reset
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">reset = function () {
+    _isInitialized = false;
+    _outputBuffer = null;
+
+    bindings.reset();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * clears all LEDs, resets the PWM and DMA-parts and deallocates
+ * all internal structures.
+ */
+ws281x.reset = function() {
+    _isInitialized = false;
+    _outputBuffer = null;
+
+    bindings.<span class="apidocCodeKeywordSpan">reset</span>();
+};
+
+module.exports = ws281x;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.setBrightness" id="apidoc.element.rpi-ws281x-native.setBrightness">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>setBrightness
+        <span class="apidocSignatureSpan">(brightness)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setBrightness = function (brightness) {
+    if(!_isInitialized) {
+        throw new Error('setBrightness called before initialization.');
+    }
+
+    bindings.setBrightness(brightness);
+    // re-render to have the brightness applied
+    bindings.render(_outputBuffer);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+ws281x.setBrightness = function(brightness) {
+   if(!_isInitialized) {
+       throw new Error('setBrightness called before initialization.');
+   }
+
+   bindings.<span class="apidocCodeKeywordSpan">setBrightness</span>(brightness);
+   // re-render to have the brightness applied
+   bindings.render(_outputBuffer);
+};
+
+/**
+* clears all LEDs, resets the PWM and DMA-parts and deallocates
+* all internal structures.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.setIndexMapping" id="apidoc.element.rpi-ws281x-native.setIndexMapping">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.</span>setIndexMapping
+        <span class="apidocSignatureSpan">(mapping)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setIndexMapping = function (mapping) {
+    _indexMapping = mapping;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.rpi-ws281x-native.indexMapping" id="apidoc.module.rpi-ws281x-native.indexMapping">module rpi-ws281x-native.indexMapping</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.indexMapping.mirrorMatrixX" id="apidoc.element.rpi-ws281x-native.indexMapping.mirrorMatrixX">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.indexMapping.</span>mirrorMatrixX
+        <span class="apidocSignatureSpan">(rows, cols)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mirrorMatrixX = function (rows, cols) {
+    var map = new Uint16Array(rows*cols);
+
+    for(var x=0; x&lt;cols; x++) {
+        for(var y=0; y&lt;rows; y++) {
+            map[cols*y + x] = cols*y + rows-x-1;
+        }
+    }
+
+    return map;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.rpi-ws281x-native.ws281x_native" id="apidoc.module.rpi-ws281x-native.ws281x_native">module rpi-ws281x-native.ws281x_native</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.ws281x_native.init" id="apidoc.element.rpi-ws281x-native.ws281x_native.init">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>init
+        <span class="apidocSignatureSpan">(numLeds, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (numLeds, options) {
+    _isInitialized = true;
+    _outputBuffer = new Buffer(4 * numLeds);
+
+    bindings.init(numLeds, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*                           intialization-options for the library
+*                           (PWM frequency, DMA channel, GPIO, Brightness)
+*/
+ws281x.init = function(numLeds, options) {
+   _isInitialized = true;
+   _outputBuffer = new Buffer(4 * numLeds);
+
+   bindings.<span class="apidocCodeKeywordSpan">init</span>(numLeds, options);
+};
+
+
+/**
+* register a mapping to manipulate array-indices within the
+* data-array before rendering.
+*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.ws281x_native.render" id="apidoc.element.rpi-ws281x-native.ws281x_native.render">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>render
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (data) {
+    if(!_isInitialized) {
+        throw new Error('render called before initialization.');
+    }
+
+    this.emit('beforeRender', data);
+
+    if(_indexMapping) {
+        data = remap(data, _indexMapping);
+    }
+
+    for(var i=0; i&lt;data.length; i++) {
+        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
+    }
+    bindings.render(_outputBuffer);
+
+    this.emit('render', data);
+
+    return data;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if(_indexMapping) {
+        data = remap(data, _indexMapping);
+    }
+
+    for(var i=0; i&lt;data.length; i++) {
+        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
+    }
+    bindings.<span class="apidocCodeKeywordSpan">render</span>(_outputBuffer);
+
+    this.emit('render', data);
+
+    return data;
+};
+
+ws281x.setBrightness = function(brightness) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.ws281x_native.reset" id="apidoc.element.rpi-ws281x-native.ws281x_native.reset">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>reset
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">reset = function () {
+    _isInitialized = false;
+    _outputBuffer = null;
+
+    bindings.reset();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * clears all LEDs, resets the PWM and DMA-parts and deallocates
+ * all internal structures.
+ */
+ws281x.reset = function() {
+    _isInitialized = false;
+    _outputBuffer = null;
+
+    bindings.<span class="apidocCodeKeywordSpan">reset</span>();
+};
+
+module.exports = ws281x;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.ws281x_native.setBrightness" id="apidoc.element.rpi-ws281x-native.ws281x_native.setBrightness">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>setBrightness
+        <span class="apidocSignatureSpan">(brightness)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setBrightness = function (brightness) {
+    if(!_isInitialized) {
+        throw new Error('setBrightness called before initialization.');
+    }
+
+    bindings.setBrightness(brightness);
+    // re-render to have the brightness applied
+    bindings.render(_outputBuffer);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+ws281x.setBrightness = function(brightness) {
+   if(!_isInitialized) {
+       throw new Error('setBrightness called before initialization.');
+   }
+
+   bindings.<span class="apidocCodeKeywordSpan">setBrightness</span>(brightness);
+   // re-render to have the brightness applied
+   bindings.render(_outputBuffer);
+};
+
+/**
+* clears all LEDs, resets the PWM and DMA-parts and deallocates
+* all internal structures.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rpi-ws281x-native.ws281x_native.setIndexMapping" id="apidoc.element.rpi-ws281x-native.ws281x_native.setIndexMapping">
+        function <span class="apidocSignatureSpan">rpi-ws281x-native.ws281x_native.</span>setIndexMapping
+        <span class="apidocSignatureSpan">(mapping)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setIndexMapping = function (mapping) {
+    _indexMapping = mapping;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
