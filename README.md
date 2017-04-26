@@ -1,6 +1,6 @@
 # npmdoc-rpi-ws281x-native
 
-#### api documentation for  [rpi-ws281x-native (v0.8.1)](https://github.com/beyondscreen/node-rpi-ws281x-native)  [![npm package](https://img.shields.io/npm/v/npmdoc-rpi-ws281x-native.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-rpi-ws281x-native) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-rpi-ws281x-native.svg)](https://travis-ci.org/npmdoc/node-npmdoc-rpi-ws281x-native)
+#### basic api documentation for  [rpi-ws281x-native (v0.8.1)](https://github.com/beyondscreen/node-rpi-ws281x-native)  [![npm package](https://img.shields.io/npm/v/npmdoc-rpi-ws281x-native.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-rpi-ws281x-native) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-rpi-ws281x-native.svg)](https://travis-ci.org/npmdoc/node-npmdoc-rpi-ws281x-native)
 
 #### (raspberry-pi *only*) native bindings to control a strip of WS281x-LEDs with node.js
 
@@ -66,7 +66,8 @@
     "scripts": {
         "install": "node-gyp rebuild"
     },
-    "version": "0.8.1"
+    "version": "0.8.1",
+    "bin": {}
 }
 ```
 
