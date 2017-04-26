@@ -237,21 +237,20 @@
     bindings.init(numLeds, options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-*                           intialization-options for the library
-*                           (PWM frequency, DMA channel, GPIO, Brightness)
-*/
-ws281x.init = function(numLeds, options) {
-   _isInitialized = true;
-   _outputBuffer = new Buffer(4 * numLeds);
-
-   bindings.<span class="apidocCodeKeywordSpan">init</span>(numLeds, options);
-};
 
 
-/**
-* register a mapping to manipulate array-indices within the
-* data-array before rendering.
-*
+var ws281x = require('../lib/ws281x-native');
+
+var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
+        pixelData = new Uint32Array(NUM_LEDS);
+
+ws281x.<span class="apidocCodeKeywordSpan">init</span>(NUM_LEDS);
+
+// ---- trap the SIGINT and reset before exit
+process.on('SIGINT', function () {
+  ws281x.reset();
+  process.nextTick(function () { process.exit(0); });
+});
 ...</pre></li>
     </ul>
 
@@ -285,21 +284,21 @@ ws281x.init = function(numLeds, options) {
     return data;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    if(_indexMapping) {
-        data = remap(data, _indexMapping);
-    }
+  ws281x.reset();
+  process.nextTick(function () { process.exit(0); });
+});
 
-    for(var i=0; i&lt;data.length; i++) {
-        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
-    }
-    bindings.<span class="apidocCodeKeywordSpan">render</span>(_outputBuffer);
+for(var i = 0; i &lt; NUM_LEDS; i++) {
+pixelData[i] = 0xffcc22;
+}
+ws281x.<span class="apidocCodeKeywordSpan">render</span>(pixelData);
 
-    this.emit('render', data);
+// ---- animation-loop
+var t0 = Date.now();
+setInterval(function () {
+var dt = Date.now() - t0;
 
-    return data;
-};
-
-ws281x.setBrightness = function(brightness) {
+ws281x.setBrightness(
 ...</pre></li>
     </ul>
 
@@ -319,17 +318,21 @@ ws281x.setBrightness = function(brightness) {
     bindings.reset();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * clears all LEDs, resets the PWM and DMA-parts and deallocates
- * all internal structures.
- */
-ws281x.reset = function() {
-    _isInitialized = false;
-    _outputBuffer = null;
+var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
+        pixelData = new Uint32Array(NUM_LEDS);
 
-    bindings.<span class="apidocCodeKeywordSpan">reset</span>();
-};
+ws281x.init(NUM_LEDS);
 
-module.exports = ws281x;
+// ---- trap the SIGINT and reset before exit
+process.on('SIGINT', function () {
+  ws281x.<span class="apidocCodeKeywordSpan">reset</span>();
+  process.nextTick(function () { process.exit(0); });
+});
+
+for(var i = 0; i &lt; NUM_LEDS; i++) {
+    pixelData[i] = 0xffcc22;
+}
+ws281x.render(pixelData);
 ...</pre></li>
     </ul>
 
@@ -352,21 +355,18 @@ module.exports = ws281x;
     bindings.render(_outputBuffer);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-};
+ws281x.render(pixelData);
 
-ws281x.setBrightness = function(brightness) {
-   if(!_isInitialized) {
-       throw new Error('setBrightness called before initialization.');
-   }
+// ---- animation-loop
+var t0 = Date.now();
+setInterval(function () {
+    var dt = Date.now() - t0;
 
-   bindings.<span class="apidocCodeKeywordSpan">setBrightness</span>(brightness);
-   // re-render to have the brightness applied
-   bindings.render(_outputBuffer);
-};
+    ws281x.<span class="apidocCodeKeywordSpan">setBrightness</span>(
+        Math.floor(Math.sin(dt/1000) * 128 + 128));
+}, 1000 / 30);
 
-/**
-* clears all LEDs, resets the PWM and DMA-parts and deallocates
-* all internal structures.
+console.log('Press &lt;ctrl&gt;+C to exit.');
 ...</pre></li>
     </ul>
 
@@ -444,21 +444,20 @@ ws281x.setBrightness = function(brightness) {
     bindings.init(numLeds, options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-*                           intialization-options for the library
-*                           (PWM frequency, DMA channel, GPIO, Brightness)
-*/
-ws281x.init = function(numLeds, options) {
-   _isInitialized = true;
-   _outputBuffer = new Buffer(4 * numLeds);
-
-   bindings.<span class="apidocCodeKeywordSpan">init</span>(numLeds, options);
-};
 
 
-/**
-* register a mapping to manipulate array-indices within the
-* data-array before rendering.
-*
+var ws281x = require('../lib/ws281x-native');
+
+var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
+        pixelData = new Uint32Array(NUM_LEDS);
+
+ws281x.<span class="apidocCodeKeywordSpan">init</span>(NUM_LEDS);
+
+// ---- trap the SIGINT and reset before exit
+process.on('SIGINT', function () {
+  ws281x.reset();
+  process.nextTick(function () { process.exit(0); });
+});
 ...</pre></li>
     </ul>
 
@@ -492,21 +491,21 @@ ws281x.init = function(numLeds, options) {
     return data;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    if(_indexMapping) {
-        data = remap(data, _indexMapping);
-    }
+  ws281x.reset();
+  process.nextTick(function () { process.exit(0); });
+});
 
-    for(var i=0; i&lt;data.length; i++) {
-        _outputBuffer.writeUInt32LE(gammaCorrect(data[i]), 4 * i);
-    }
-    bindings.<span class="apidocCodeKeywordSpan">render</span>(_outputBuffer);
+for(var i = 0; i &lt; NUM_LEDS; i++) {
+pixelData[i] = 0xffcc22;
+}
+ws281x.<span class="apidocCodeKeywordSpan">render</span>(pixelData);
 
-    this.emit('render', data);
+// ---- animation-loop
+var t0 = Date.now();
+setInterval(function () {
+var dt = Date.now() - t0;
 
-    return data;
-};
-
-ws281x.setBrightness = function(brightness) {
+ws281x.setBrightness(
 ...</pre></li>
     </ul>
 
@@ -526,17 +525,21 @@ ws281x.setBrightness = function(brightness) {
     bindings.reset();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * clears all LEDs, resets the PWM and DMA-parts and deallocates
- * all internal structures.
- */
-ws281x.reset = function() {
-    _isInitialized = false;
-    _outputBuffer = null;
+var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
+        pixelData = new Uint32Array(NUM_LEDS);
 
-    bindings.<span class="apidocCodeKeywordSpan">reset</span>();
-};
+ws281x.init(NUM_LEDS);
 
-module.exports = ws281x;
+// ---- trap the SIGINT and reset before exit
+process.on('SIGINT', function () {
+  ws281x.<span class="apidocCodeKeywordSpan">reset</span>();
+  process.nextTick(function () { process.exit(0); });
+});
+
+for(var i = 0; i &lt; NUM_LEDS; i++) {
+    pixelData[i] = 0xffcc22;
+}
+ws281x.render(pixelData);
 ...</pre></li>
     </ul>
 
@@ -559,21 +562,18 @@ module.exports = ws281x;
     bindings.render(_outputBuffer);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-};
+ws281x.render(pixelData);
 
-ws281x.setBrightness = function(brightness) {
-   if(!_isInitialized) {
-       throw new Error('setBrightness called before initialization.');
-   }
+// ---- animation-loop
+var t0 = Date.now();
+setInterval(function () {
+    var dt = Date.now() - t0;
 
-   bindings.<span class="apidocCodeKeywordSpan">setBrightness</span>(brightness);
-   // re-render to have the brightness applied
-   bindings.render(_outputBuffer);
-};
+    ws281x.<span class="apidocCodeKeywordSpan">setBrightness</span>(
+        Math.floor(Math.sin(dt/1000) * 128 + 128));
+}, 1000 / 30);
 
-/**
-* clears all LEDs, resets the PWM and DMA-parts and deallocates
-* all internal structures.
+console.log('Press &lt;ctrl&gt;+C to exit.');
 ...</pre></li>
     </ul>
 
